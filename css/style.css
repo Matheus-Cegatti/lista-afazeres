@@ -44,7 +44,8 @@ body {
     align-items: center;
 }
 
-#afazeres-input {
+#afazeres-input,
+#input-editar {
     margin-right: 0.5rem;
     padding: 0.3rem 0.5rem;
     border: 1.5px solid var(--color-border);
@@ -54,6 +55,10 @@ body {
 
 #formulario-lista {
     margin: 1.5rem 0;
+}
+
+.esconder {
+    display: none;
 }
 
 button {
@@ -80,6 +85,14 @@ button:hover {
   button i {
     pointer-events: none;
     font-weight: bold;
+  }
+
+  .formulario-edicao {
+    display: flex;
+  }
+
+  .botao-editar {
+    margin-right: 0.8rem;
   }
   
   .lista {
