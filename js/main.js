@@ -8,11 +8,12 @@ const cancelarEdicao = document.querySelector(".cancelar-edicao");
 //criando a div com as tarefas digitada
 const salvarLista  = (texto) => {
     const fazerLista = document.createElement("div");
-    fazerLista.classList.add("fazerLista")
+    fazerLista.classList.add("lista")
 
     const tituloLista = document.createElement("h3");
     tituloLista.innerText = texto
     fazerLista.appendChild(tituloLista)
+    tituloLista.classList.add("texto-adicionado")
 
     const btnFeito = document.createElement("button");
     btnFeito.classList.add("botao-feito")
@@ -21,13 +22,18 @@ const salvarLista  = (texto) => {
 
     const btnEditar = document.createElement("button");
     btnEditar.classList.add("botao-editar")
-    btnEditar.innerHTML = '<i class="fa-sharp fa-solid fa-circle-xmark"></i>'
+    btnEditar.innerHTML = '<i class="fa-solid fa-pen"></i>'
     fazerLista.appendChild(btnEditar)
 
     const btnExcluir = document.createElement("button");
     btnExcluir.classList.add("botao-excluir")
     btnExcluir.innerHTML = '<i class="fa-sharp fa-solid fa-circle-xmark"></i>'
     fazerLista.appendChild(btnExcluir)
+
+
+    //fazendo a div aparecer quando clica em checked
+    listaTarefas.appendChild(fazerLista);
+
 
     console.log(fazerLista);
 }
