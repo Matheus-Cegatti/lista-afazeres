@@ -21,14 +21,15 @@ body {
     background: radial-gradient(circle, rgb(135, 243, 230) 0%, rgb(110, 161, 216) 9%, rgba(83, 119, 122, 0.068) 35%); */
     background: rgb(0,0,0);
     background: linear-gradient(7deg, rgba(0,0,0,1) 0%, rgba(16,54,99,1) 100%);
-    max-width: 480px;
-    padding: 5.5rem;
-    margin: 3rem auto;
+    max-width: 450px;
+    padding: 1.5rem;
+    margin: 3rem auto 0;
 }
 
 .titulo-lista {
     text-align: center;
     border-bottom: 1px solid var(--color-border);
+    padding: 0 1rem 1rem;
 
 }
 
@@ -85,14 +86,28 @@ button:hover {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    padding: 1.3rem;
+    padding: 1.3rem 1rem;
     border-bottom: 1.2px solid var(--color-border);
   }
 
   .texto-adicionado {
     font-size: 0.9rem;
+    flex: 1;
   }
 
 .lista button {
     margin-left: 1rem;
+}
+
+.feito {
+    background-color: var(--color-background--done);
+}
+
+.feito h3{
+    text-decoration: line-through;
+}
+
+.feito button {
+    background-color: var(--color-button--done);
+    
 }
