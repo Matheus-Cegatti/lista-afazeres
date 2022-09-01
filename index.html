@@ -5,6 +5,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/global.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;600;700&display=swap" rel="stylesheet">
 
     <!-- Fonte icones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -13,15 +17,48 @@
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Minha lista!</h1>
+        <header class="titulo-lista">
+            <h1 class="cabeçalho">Minha lista!</h1>
         </header>
         <form id="formulario-lista">
-            <p>Adicione a sua tarefa</p>
-            <div class="icone-formularia">
-                <i class="fa-sharp fa-solid fa-share"></i>
+            <p class="texto-adicione">Adicione a sua tarefa</p>
+            <div class="icone-formulario">
+                <input type="text" id="afazeres-input" placeholder="O que você pretende adicionar em sua lista">
+                <button type="submit"><i class="fa-sharp fa-solid fa-share"></i>
+                </button>
+                
             </div>
         </form>
+
+        <div class="lista-afazeres">
+            <div class="lista">
+                <h3 class="texto-adicionado">Teste afazeres</h3>
+                <button class="botao-feito">
+                    <i class="fa-sharp fa-solid fa-circle-check"></i>
+                </button>
+                <button class="botao-editar">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="botao-excluir">
+                    <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+                </button>
+                <!-- <div class="lista">
+                    <h3 class="texto-adicionado">Teste afazeres</h3>
+                    <button class="botao-feito">
+                        <i class="fa-sharp fa-solid fa-circle-check"></i>
+                    </button>
+                    <button class="botao-editar">
+                        <i class="fa-solid fa-pen"></i>
+                    </button>
+                    <button class="botao-excluir">
+                        <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+                    </button>
+                </div> -->
+            </div>
+        </div>
     </div>
+
+
+    
 </body>
 </html>

@@ -1,4 +1,98 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Josefin Sans', sans-serif;
+  }
+
 body {
-    background: rgb(68,149,140);
-    background: radial-gradient(circle, rgba(68,149,140,1) 0%, rgba(106,133,162,1) 98%);
+    background-image: url("../img/background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: 100vh;
+    /* background: rgb(68,149,140);
+    background: radial-gradient(circle, rgba(68,149,140,1) 0%, rgba(106,133,162,1) 98%); */
+}
+
+.container {
+    border-radius: 12px;
+    /* background: rgb(68,149,140);
+    background: radial-gradient(circle, rgb(135, 243, 230) 0%, rgb(110, 161, 216) 9%, rgba(83, 119, 122, 0.068) 35%); */
+    background: rgb(0,0,0);
+    background: linear-gradient(7deg, rgba(0,0,0,1) 0%, rgba(16,54,99,1) 100%);
+    max-width: 480px;
+    padding: 5.5rem;
+    margin: 3rem auto;
+}
+
+.titulo-lista {
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+
+}
+
+.cabeçalho,
+.texto-adicione,
+.texto-adicionado {
+    color: var(--color-font);
+}
+
+.icone-formulario {
+    display: flex;
+    align-items: center;
+}
+
+#afazeres-input {
+    margin-right: 0.5rem;
+    padding: 0.3rem 0.5rem;
+    border: 1.5px solid var(--color-border);
+    border-radius: 10px;
+    margin-top: 0.2rem;
+}
+
+#formulario-lista {
+    margin: 1.5rem 0;
+}
+
+button {
+    background-color: var(--color-button);
+    padding: 0.3rem 0.5rem;
+    border: 2px solid var(--color-border) ;
+    border-radius: 5px; 
+    font-size: 1rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: var(--color-button--hover);
+  }
+  
+  button:hover > i {
+    color: var(--color-font);
+  }
+  
+  button i {
+    pointer-events: none;
+    font-weight: bold;
+  }
+  
+  .lista {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1.3rem;
+    border-bottom: 1.2px solid var(--color-border);
+  }
+
+  .texto-adicionado {
+    font-size: 0.9rem;
+  }
+
+.lista button {
+    margin-left: 1rem;
 }
