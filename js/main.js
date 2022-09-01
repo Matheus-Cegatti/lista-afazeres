@@ -4,6 +4,8 @@ const listaTarefas = document.querySelector(".lista-afazeres");
 const editarTarefas = document.querySelector("#editar-formulario");
 const inputEditar = document.querySelector("#input-editar");
 const cancelarEdicao = document.querySelector(".cancelar-edicao");
+const feitoBotao = document.querySelector(".botao-feito");
+const listaFeita = document.querySelectorAll(".lista");
 
 //criando a div com as tarefas digitada
 const salvarLista  = (texto) => {
@@ -33,6 +35,8 @@ const salvarLista  = (texto) => {
 
     //fazendo a div aparecer quando clica em checked
     listaTarefas.appendChild(fazerLista);
+    caixaDeTexto.value = "";
+    caixaDeTexto.focus();
 
 
     console.log(fazerLista);
@@ -47,5 +51,20 @@ formularioTexto.addEventListener("submit", (evento) => {
 
     if(valorDoInput) {
         salvarLista(valorDoInput)
+    }
+})
+
+//dando funcionalidade ao botão de feito 
+// feitoBotao.addEventListener("click", () => {
+//     listaFeita.classList.toggle("feito")
+// })
+document.addEventListener("click", (evento) => {
+    const elementoAlvo = evento.target;
+    const elementoParente = elementoAlvo.closest("div") //buscando a div mais proxima da const elementeAlvo
+
+    if(elementoAlvo.classList.contains("botao-feito")) {
+        elementoParente.classList.toggle("feito")
+        console.log("CLICOU");
+        //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
     }
 })
