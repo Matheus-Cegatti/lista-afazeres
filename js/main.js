@@ -1,7 +1,7 @@
 const caixaDeTexto = document.querySelector("#afazeres-input");
 const formularioTexto = document.querySelector("#formulario-lista");
 const listaTarefas = document.querySelector(".lista-afazeres");
-const editarTarefas = document.querySelector("#editar-formulario");
+const editarTarefas = document.querySelector("#editar-fromulario");
 const inputEditar = document.querySelector("#input-editar");
 const cancelarEdicao = document.querySelector(".cancelar-edicao");
 const feitoBotao = document.querySelector(".botao-feito");
@@ -42,6 +42,13 @@ const salvarLista  = (texto) => {
     console.log(fazerLista);
 }
 
+//escondendo a parte de adicionar tarefas e tarefas adicionadas quando clica em editar e mostrando a parte do edit e fazendo o caminho oposto quando se clica em no botao de edit
+const alternandoLayout = () => {
+    formularioTexto.classList.toggle("esconder");
+    listaTarefas.classList.toggle("esconder");
+    editarTarefas.classList.toggle("esconder");
+}
+
 //pegando a informação digitada no input
 formularioTexto.addEventListener("submit", (evento) => {
     evento.preventDefault();
@@ -67,6 +74,12 @@ document.addEventListener("click", (evento) => {
         console.log("CLICOU");
         //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
     }
+    //encontrando o botão de editar
+    if(elementoAlvo.classList.contains("botao-editar")) {
+        alternandoLayout()
+        console.log("edit");
+    }
+
 
     //excluindo uma tarefa ao clicar no botão
     if(elementoAlvo.classList.contains("botao-excluir")) {
