@@ -67,4 +67,10 @@ document.addEventListener("click", (evento) => {
         console.log("CLICOU");
         //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
     }
+
+    //excluindo uma tarefa ao clicar no botão
+    if(elementoAlvo.classList.contains("botao-excluir")) {
+        elementoParente.remove();
+        console.log("Excluiu");
+    }
 })
