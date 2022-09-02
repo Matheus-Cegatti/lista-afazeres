@@ -90,10 +90,6 @@ button:hover {
   .formulario-edicao {
     display: flex;
   }
-
-  .botao-formulario--editar {
-    margin-right: 0.8rem;
-  }
   
   .lista {
     display: flex;
@@ -118,9 +114,21 @@ button:hover {
 
 .feito h3{
     text-decoration: line-through;
+    color: black;
+    font-weight: 700;
+    
 }
 
 .feito button {
     background-color: var(--color-button--done);
     
+}
+
+#lista-afazeres .feito {
+  border: 1px solid var(--color-border);
+    border-radius: 7px;
+}
+
+.cancelar-edicao {
+  margin-left: 0.7rem;
 }

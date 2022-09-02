@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,17 @@
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/global.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;600;700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;600;700&display=swap" rel="stylesheet">
 
     <!-- Fonte icones -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+        integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Minha Lista!</title>
 </head>
+
 <body>
     <div class="container">
         <header class="titulo-lista">
@@ -26,7 +30,7 @@
                 <input type="text" id="afazeres-input" placeholder="O que você pretende adicionar em sua lista">
                 <button type="submit"><i class="fa-sharp fa-solid fa-share"></i>
                 </button>
-                
+
             </div>
         </form>
 
@@ -34,14 +38,26 @@
             <p class="texto-adicione">Edite sua tarefa</p>
             <div class="formulario-edicao">
                 <input type="text" id="input-editar">
-                <button type="submit" class="botao-formulario--editar">
+                <button type="submit">
                     <i class="fa-regular fa-pen-to-square"></i>
                 </button>
                 <button class="cancelar-edicao">Cancelar</button>
             </div>
         </form>
 
-        <div class="lista-afazeres">
+        <div id="lista-afazeres">
+            <!-- <div class="lista">
+                <h3 class="texto-adicionado">Teste afazeres</h3>
+                <button class="botao-feito">
+                    <i class="fa-sharp fa-solid fa-circle-check"></i>
+                </button>
+                <button class="botao-editar">
+                    <i class="fa-solid fa-pen"></i>
+                </button>
+                <button class="botao-excluir">
+                    <i class="fa-sharp fa-solid fa-circle-xmark"></i>
+                </button>
+            </div>
             <div class="lista">
                 <h3 class="texto-adicionado">Teste afazeres</h3>
                 <button class="botao-feito">
@@ -53,24 +69,13 @@
                 <button class="botao-excluir">
                     <i class="fa-sharp fa-solid fa-circle-xmark"></i>
                 </button>
-                </div>
-                <div class="lista">
-                    <h3 class="texto-adicionado">Teste afazeres</h3>
-                    <button class="botao-feito">
-                        <i class="fa-sharp fa-solid fa-circle-check"></i>
-                    </button>
-                    <button class="botao-editar">
-                        <i class="fa-solid fa-pen"></i>
-                    </button>
-                    <button class="botao-excluir">
-                        <i class="fa-sharp fa-solid fa-circle-xmark"></i>
-                    </button>
-                </div>
             </div>
-        </div>
+        </div> -->
+    </div>
     </div>
 
     <script src="./js/main.js"></script>
-    
+
 </body>
+
 </html>
