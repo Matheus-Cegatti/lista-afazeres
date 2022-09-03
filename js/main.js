@@ -7,10 +7,19 @@ const cancelarEdicao = document.querySelector(".cancelar-edicao");
 // const feitoBotao = document.querySelector(".botao-feito");
 // const listaFeita = document.querySelectorAll(".lista");
 let tituloAntigoDigitado;
-const tarefas = []
+const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
+console.log(tarefas);
+
+
+tarefas.forEach((elemento) => {
+    salvarLista(elemento.texto);
+    console.log(elemento.texto);
+    
+})
+
 
 //criando a div com as tarefas digitada
-const salvarLista = (texto) => {
+function salvarLista(texto) {
     const fazerLista = document.createElement("div");
     fazerLista.classList.add("lista")
 
@@ -33,6 +42,8 @@ const salvarLista = (texto) => {
     btnExcluir.classList.add("botao-excluir")
     btnExcluir.innerHTML = '<i class="fa-sharp fa-solid fa-circle-xmark"></i>'
     fazerLista.appendChild(btnExcluir)
+
+    
 
 
     //fazendo a div aparecer quando clica em checked
@@ -71,19 +82,25 @@ formularioTexto.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
     const valorDoInput = caixaDeTexto.value
-    // console.log(valorDoInput);
-
-    const tarefaAtual = {
-        "nome": valorDoInput
-    }
-
-    tarefas.push(tarefaAtual);
-
-    localStorage.setItem("tarefa", JSON.stringify(tarefas));
+    console.log(valorDoInput);
+    
+   
+    
+    
     if (valorDoInput) {
         salvarLista(valorDoInput)
     }
+    const tarefaAtual = {
+        "texto": valorDoInput
+    }
+    console.log(tarefaAtual);
+    
+    tarefas.push(tarefaAtual);
+
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    console.log(valorDoInput);
 })
+
 
 //dando funcionalidade ao botão de feito 
 // feitoBotao.addEventListener("click", () => {
