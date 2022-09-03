@@ -71,7 +71,7 @@ formularioTexto.addEventListener("submit", (evento) => {
     
     const valorDoInput = caixaDeTexto.value
     // console.log(valorDoInput);
-
+    localStorage.setItem("nome", valorDoInput);
     if(valorDoInput) {
         salvarLista(valorDoInput)
     }
@@ -138,3 +138,8 @@ editarTarefas.addEventListener("submit", (evento) => {
     alternandoLayout()
     console.log("EDIÇÃO 2");
 })
+
+localStorage.setItem("name", "Matheus");
+
+const salvarNoLocalStorage = (lista)
+
