@@ -7,9 +7,10 @@ const cancelarEdicao = document.querySelector(".cancelar-edicao");
 // const feitoBotao = document.querySelector(".botao-feito");
 // const listaFeita = document.querySelectorAll(".lista");
 let tituloAntigoDigitado;
+const tarefas = []
 
 //criando a div com as tarefas digitada
-const salvarLista  = (texto) => {
+const salvarLista = (texto) => {
     const fazerLista = document.createElement("div");
     fazerLista.classList.add("lista")
 
@@ -59,7 +60,7 @@ const atualizarEdicao = (inputDeEditar) => {
     listas.forEach((lista) => {
         let tituloDigitado = lista.querySelector("h3");
         //verificando se o texto do meu titulo é igual ao valor antigo digitado
-        if(tituloDigitado.innerText === tituloAntigoDigitado) {
+        if (tituloDigitado.innerText === tituloAntigoDigitado) {
             tituloDigitado.innerText = inputDeEditar //e aqui eu substituo o texto antigo armazenado pelo novo texto
         }
     })
@@ -68,11 +69,18 @@ const atualizarEdicao = (inputDeEditar) => {
 //pegando a informação digitada no input
 formularioTexto.addEventListener("submit", (evento) => {
     evento.preventDefault();
-    
+
     const valorDoInput = caixaDeTexto.value
     // console.log(valorDoInput);
-    localStorage.setItem("nome", valorDoInput);
-    if(valorDoInput) {
+
+    const tarefaAtual = {
+        "nome": valorDoInput
+    }
+
+    tarefas.push(tarefaAtual);
+
+    localStorage.setItem("tarefa", JSON.stringify(tarefas));
+    if (valorDoInput) {
         salvarLista(valorDoInput)
     }
 })
@@ -88,18 +96,18 @@ document.addEventListener("click", (evento) => {
 
 
     //buscando se o elemento que vamos clicar é um titulo e se esse titulo é um h3, dizendo depois que o tituloDigitado (clicado) receber o seu valor de texto
-    if(elementoParente && elementoParente.querySelector("h3")) {
+    if (elementoParente && elementoParente.querySelector("h3")) {
         tituloDigitado = elementoParente.querySelector("h3").innerText || ""; //esta buscando o texto digitado quando clico em editar
         // console.log(tituloDigitado);
     }
 
-    if(elementoAlvo.classList.contains("botao-feito")) {
+    if (elementoAlvo.classList.contains("botao-feito")) {
         elementoParente.classList.toggle("feito")
         console.log("CLICOU");
         //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
     }
     //encontrando o botão de editar
-    if(elementoAlvo.classList.contains("botao-editar")) {
+    if (elementoAlvo.classList.contains("botao-editar")) {
         alternandoLayout()
         //guardando o "valor" digitado quando clico em editar -- deixando o campo preenchido quando clicado na caneta de editar
         inputEditar.value = tituloDigitado;
@@ -110,7 +118,7 @@ document.addEventListener("click", (evento) => {
 
 
     //excluindo uma tarefa ao clicar no botão
-    if(elementoAlvo.classList.contains("botao-excluir")) {
+    if (elementoAlvo.classList.contains("botao-excluir")) {
         elementoParente.remove();
         console.log("Excluiu");
     }
@@ -131,7 +139,7 @@ editarTarefas.addEventListener("submit", (evento) => {
 
     const inputDeEditar = inputEditar.value;
 
-    if(inputDeEditar) {
+    if (inputDeEditar) {
         atualizarEdicao(inputDeEditar)
     }
 
@@ -140,6 +148,4 @@ editarTarefas.addEventListener("submit", (evento) => {
 })
 
 localStorage.setItem("name", "Matheus");
-
-const salvarNoLocalStorage = (lista)
 
