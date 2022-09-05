@@ -17,6 +17,48 @@ tarefas.forEach((elemento) => {
     
 })
 
+formularioTexto.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+
+    const valorDoInput = caixaDeTexto.value
+    console.log(valorDoInput);
+    console.log(caixaDeTexto.value);
+    
+    // if (valorDoInput) {
+    //     salvarLista(valorDoInput)
+    // }
+
+    
+    // console.log(existe);
+//começando o localStorage, pegando o valor do input digitado inserindo novos valores no array com o push e transformando em string.
+    const tarefaAtual = {
+        "texto": valorDoInput
+    }
+    console.log(tarefaAtual);
+    //buscando se o valor digitado já existe
+    const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
+    if(existe) {
+        tarefaAtual.id = existe.id
+        console.log(existe.id);
+    }else {
+        tarefaAtual.id = tarefas.length
+        salvarLista(valorDoInput);
+        console.log(tarefaAtual);
+        tarefas.push(tarefaAtual);
+    }
+    
+    
+    console.log(tarefaAtual);
+    
+    
+
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    console.log(valorDoInput);
+
+    localStorage.setItem("name", "Matheus");
+})
+
+
 
 //criando a div com as tarefas digitada
 function salvarLista(texto) {
@@ -25,6 +67,7 @@ function salvarLista(texto) {
 
     const tituloLista = document.createElement("h3");
     tituloLista.innerText = texto
+    tituloLista.dataset.id = texto.id
     fazerLista.appendChild(tituloLista)
     tituloLista.classList.add("texto-adicionado")
 
@@ -43,6 +86,7 @@ function salvarLista(texto) {
     btnExcluir.innerHTML = '<i class="fa-sharp fa-solid fa-circle-xmark"></i>'
     fazerLista.appendChild(btnExcluir)
 
+    
     
 
 
@@ -78,34 +122,59 @@ const atualizarEdicao = (inputDeEditar) => {
 }
 
 //pegando a informação digitada no input
-formularioTexto.addEventListener("submit", (evento) => {
-    evento.preventDefault();
 
-    const valorDoInput = caixaDeTexto.value
-    console.log(valorDoInput);
-    
-   
-    
-    
-    if (valorDoInput) {
-        salvarLista(valorDoInput)
-    }
-    const tarefaAtual = {
-        "texto": valorDoInput
-    }
-    console.log(tarefaAtual);
-    
-    tarefas.push(tarefaAtual);
 
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
-    console.log(valorDoInput);
-})
+const pegarLocalStorage = () => {
+    const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+  
+    return tarefas;
+  };
+  
+  const carregarLocalStorage = () => {
+    const tarefas = pegarLocalStorage();
+  
+    tarefas.forEach((lista) => {
+      saveTodo(lista.text, lista.done, 0);
+    });
+  };
+  
+//   const salvarLocalStorage = (lista) => {
+//     const listaTarefas = pegarLocalStorage();
+  
+//     tarefas.push(todo);
+  
+//     localStorage.setItem("tarefas", JSON.stringify(tarefas));
+//   };
+  
+
+// const pegarLocalStorage = () => {
+//     const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
+
+//     return tarefas;
+// }
+
+
+
+// const salvarLocalStorage = (lista) => {
+//     const valorDoInput = caixaDeTexto.value
+//     const tarefaAtual = {
+//         "texto": valorDoInput,
+//         "status": " teste"
+//     }
+//     const tarefas = pegarLocalStorage()
+    
+//     tarefas.push(tarefaAtual);
+
+//     localStorage.setItem("tarefas", JSON.stringify(tarefas));
+// }
 
 
 //dando funcionalidade ao botão de feito 
 // feitoBotao.addEventListener("click", () => {
 //     listaFeita.classList.toggle("feito")
 // })
+
+
 document.addEventListener("click", (evento) => {
     const elementoAlvo = evento.target;
     const elementoParente = elementoAlvo.closest("div") //buscando a div mais proxima da const elementeAlvo
@@ -118,11 +187,23 @@ document.addEventListener("click", (evento) => {
         // console.log(tituloDigitado);
     }
 
-    if (elementoAlvo.classList.contains("botao-feito")) {
-        elementoParente.classList.toggle("feito")
-        console.log("CLICOU");
-        //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
+    
+        if (elementoAlvo.classList.contains("botao-feito")) {
+            elementoParente.classList.toggle("feito")
+            
+            console.log("CLICOU");
+            
     }
+    
+
+    // if (elementoAlvo.classList.contains("botao-feito")) {
+    //     elementoParente.classList.toggle("feito")
+    //     console.log("CLICOU");
+
+
+        
+    //     //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
+    // }
     //encontrando o botão de editar
     if (elementoAlvo.classList.contains("botao-editar")) {
         alternandoLayout()
@@ -164,5 +245,6 @@ editarTarefas.addEventListener("submit", (evento) => {
     console.log("EDIÇÃO 2");
 })
 
-localStorage.setItem("name", "Matheus");
+
+
 
