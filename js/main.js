@@ -12,7 +12,7 @@ console.log(tarefas);
 
 
 tarefas.forEach((elemento) => {
-    salvarLista(elemento.texto);
+    salvarLista(elemento);
     console.log(elemento.texto);
     
 })
@@ -20,9 +20,9 @@ tarefas.forEach((elemento) => {
 formularioTexto.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
-    const valorDoInput = caixaDeTexto.value
+    const valorDoInput = caixaDeTexto
     console.log(valorDoInput);
-    console.log(caixaDeTexto.value);
+    console.log(caixaDeTexto);
     
     // if (valorDoInput) {
     //     salvarLista(valorDoInput)
@@ -32,7 +32,7 @@ formularioTexto.addEventListener("submit", (evento) => {
     // console.log(existe);
 //começando o localStorage, pegando o valor do input digitado inserindo novos valores no array com o push e transformando em string.
     const tarefaAtual = {
-        "texto": valorDoInput
+        "texto": valorDoInput.value,
     }
     console.log(tarefaAtual);
     //buscando se o valor digitado já existe
@@ -42,7 +42,7 @@ formularioTexto.addEventListener("submit", (evento) => {
         console.log(existe.id);
     }else {
         tarefaAtual.id = tarefas.length
-        salvarLista(valorDoInput);
+        salvarLista(tarefaAtual);
         console.log(tarefaAtual);
         tarefas.push(tarefaAtual);
     }
@@ -53,7 +53,7 @@ formularioTexto.addEventListener("submit", (evento) => {
     
 
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
-    console.log(valorDoInput);
+    // console.log(valorDoInput);
 
     localStorage.setItem("name", "Matheus");
 })
@@ -61,13 +61,14 @@ formularioTexto.addEventListener("submit", (evento) => {
 
 
 //criando a div com as tarefas digitada
-function salvarLista(texto) {
+function salvarLista(item) {
+    console.log(item);
     const fazerLista = document.createElement("div");
     fazerLista.classList.add("lista")
 
     const tituloLista = document.createElement("h3");
-    tituloLista.innerText = texto
-    tituloLista.dataset.id = texto.id
+    tituloLista.innerHTML = item.texto
+    tituloLista.dataset.id = item.id
     fazerLista.appendChild(tituloLista)
     tituloLista.classList.add("texto-adicionado")
 
@@ -119,6 +120,8 @@ const atualizarEdicao = (inputDeEditar) => {
             tituloDigitado.innerText = inputDeEditar //e aqui eu substituo o texto antigo armazenado pelo novo texto
         }
     })
+
+    listaAtualizadaLocalStorage(tituloAntigoDigitado, inputDeEditar)
 }
 
 //pegando a informação digitada no input
@@ -134,9 +137,20 @@ const pegarLocalStorage = () => {
     const tarefas = pegarLocalStorage();
   
     tarefas.forEach((lista) => {
-      saveTodo(lista.text, lista.done, 0);
+      saveTodo(lista.texto, lista.done, 0);
     });
   };
+
+
+  const listaAtualizadaLocalStorage = (textiAntigo, textoNovo) => {
+    const tarefas = pegarLocalStorage();
+
+    tarefas.map((lista) =>
+    lista.texto === textiAntigo ? (lista.texto = textoNovo) : null
+    )
+
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
+  }
   
 //   const salvarLocalStorage = (lista) => {
 //     const listaTarefas = pegarLocalStorage();
@@ -191,7 +205,8 @@ document.addEventListener("click", (evento) => {
         if (elementoAlvo.classList.contains("botao-feito")) {
             elementoParente.classList.toggle("feito")
             
-            console.log("CLICOU");
+            
+            console.log("CLICOU2");
             
     }
     
@@ -244,7 +259,3 @@ editarTarefas.addEventListener("submit", (evento) => {
     alternandoLayout()
     console.log("EDIÇÃO 2");
 })
-
-
-
-
