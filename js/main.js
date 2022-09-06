@@ -61,7 +61,7 @@ formularioTexto.addEventListener("submit", (evento) => {
 
 
 //criando a div com as tarefas digitada
-function salvarLista(item) {
+function salvarLista(item, feito= 0, salvo = 1) {
     console.log(item);
     const fazerLista = document.createElement("div");
     fazerLista.classList.add("lista")
@@ -88,9 +88,6 @@ function salvarLista(item) {
     fazerLista.appendChild(btnExcluir)
 
     
-    
-
-
     //fazendo a div aparecer quando clica em checked
     listaTarefas.appendChild(fazerLista);
     caixaDeTexto.value = "";
@@ -99,6 +96,9 @@ function salvarLista(item) {
 
     console.log(fazerLista);
 }
+
+
+
 
 //escondendo a parte de adicionar tarefas e tarefas adicionadas quando clica em editar e mostrando a parte do edit e fazendo o caminho oposto quando se clica em no botao de edit
 const alternandoLayout = () => {
@@ -136,9 +136,8 @@ const pegarLocalStorage = () => {
   const carregarLocalStorage = () => {
     const tarefas = pegarLocalStorage();
   
-    tarefas.forEach((lista) => {
-      saveTodo(lista.texto, lista.done, 0);
-    });
+    tarefas.push(lista);
+    localStorage.setItem("tarefas", JSON.stringify(tarefas))
   };
 
 
@@ -151,6 +150,25 @@ const pegarLocalStorage = () => {
 
     localStorage.setItem("tarefas", JSON.stringify(tarefas))
   }
+
+  const removerListaLocalStorage = (tituloDigitado) => {
+
+    const tarefas = pegarLocalStorage();
+  
+    const filtrarLista = tarefas.filter((lista) => lista.texto != tituloDigitado);
+  
+    localStorage.setItem("tarefas", JSON.stringify(filtrarLista));
+  };
+
+  const atualizarStatusEdicao = (tituloDigitado) => {
+    const tarefas = pegarLocalStorage();
+  
+    tarefas.map((lista) =>
+      lista.texto === tituloDigitado ? (lista.feito = !lista.feito) : null
+    );
+  
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+  };
   
 //   const salvarLocalStorage = (lista) => {
 //     const listaTarefas = pegarLocalStorage();
@@ -204,7 +222,7 @@ document.addEventListener("click", (evento) => {
     
         if (elementoAlvo.classList.contains("botao-feito")) {
             elementoParente.classList.toggle("feito")
-            
+            atualizarStatusEdicao(tituloDigitado)
             
             console.log("CLICOU2");
             
@@ -229,10 +247,12 @@ document.addEventListener("click", (evento) => {
         console.log(tituloAntigoDigitado);
     }
 
-
+    
     //excluindo uma tarefa ao clicar no botão
     if (elementoAlvo.classList.contains("botao-excluir")) {
         elementoParente.remove();
+
+        removerListaLocalStorage(tituloDigitado);
         console.log("Excluiu");
     }
 })
