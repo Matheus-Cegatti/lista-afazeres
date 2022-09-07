@@ -36,16 +36,16 @@ formularioTexto.addEventListener("submit", (evento) => {
     }
     console.log(tarefaAtual);
     //buscando se o valor digitado já existe
-    const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
-    if(existe) {
-        tarefaAtual.id = existe.id
-        console.log(existe.id);
-    }else {
+    // const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
+    // if(existe) {
+    //     tarefaAtual.id = existe.id
+    //     console.log(existe.id);
+    // }else {
         tarefaAtual.id = tarefas.length
         salvarLista(tarefaAtual);
         console.log(tarefaAtual);
         tarefas.push(tarefaAtual);
-    }
+    // }
     
     
     console.log(tarefaAtual);
@@ -194,6 +194,7 @@ document.addEventListener("click", (evento) => {
 
     
     //     //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
+
     //encontrando o botão de editar
     if (elementoAlvo.classList.contains("botao-editar")) {
         alternandoLayout()
