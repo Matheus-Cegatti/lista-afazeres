@@ -61,7 +61,7 @@ formularioTexto.addEventListener("submit", (evento) => {
 
 
 //criando a div com as tarefas digitada
-function salvarLista(item, feito= 0, salvo = 1) {
+function salvarLista(item) {
     console.log(item);
     const fazerLista = document.createElement("div");
     fazerLista.classList.add("lista")
@@ -133,10 +133,10 @@ const pegarLocalStorage = () => {
     return tarefas;
   };
   
-  const carregarLocalStorage = () => {
+  const carregarLocalStorage = (fazerLista) => {
     const tarefas = pegarLocalStorage();
   
-    tarefas.push(lista);
+    tarefas.push(fazerLista);
     localStorage.setItem("tarefas", JSON.stringify(tarefas))
   };
 
@@ -170,41 +170,6 @@ const pegarLocalStorage = () => {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
   };
   
-//   const salvarLocalStorage = (lista) => {
-//     const listaTarefas = pegarLocalStorage();
-  
-//     tarefas.push(todo);
-  
-//     localStorage.setItem("tarefas", JSON.stringify(tarefas));
-//   };
-  
-
-// const pegarLocalStorage = () => {
-//     const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
-
-//     return tarefas;
-// }
-
-
-
-// const salvarLocalStorage = (lista) => {
-//     const valorDoInput = caixaDeTexto.value
-//     const tarefaAtual = {
-//         "texto": valorDoInput,
-//         "status": " teste"
-//     }
-//     const tarefas = pegarLocalStorage()
-    
-//     tarefas.push(tarefaAtual);
-
-//     localStorage.setItem("tarefas", JSON.stringify(tarefas));
-// }
-
-
-//dando funcionalidade ao botão de feito 
-// feitoBotao.addEventListener("click", () => {
-//     listaFeita.classList.toggle("feito")
-// })
 
 
 document.addEventListener("click", (evento) => {
@@ -223,20 +188,12 @@ document.addEventListener("click", (evento) => {
         if (elementoAlvo.classList.contains("botao-feito")) {
             elementoParente.classList.toggle("feito")
             atualizarStatusEdicao(tituloDigitado)
-            
             console.log("CLICOU2");
             
     }
+
     
-
-    // if (elementoAlvo.classList.contains("botao-feito")) {
-    //     elementoParente.classList.toggle("feito")
-    //     console.log("CLICOU");
-
-
-        
     //     //encontrando o elemento com a classe ".botao-feito" -- o efeito de click só acontecerá nele.
-    // }
     //encontrando o botão de editar
     if (elementoAlvo.classList.contains("botao-editar")) {
         alternandoLayout()
