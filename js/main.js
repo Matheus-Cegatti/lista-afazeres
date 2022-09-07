@@ -40,16 +40,16 @@ formularioTexto.addEventListener("submit", (evento) => {
     }
     // console.log(tarefaAtual);
     //buscando se o valor digitado já existe
-    // const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
-    // if(existe) {
-    //     tarefaAtual.id = existe.id
-    //     console.log(existe.id);
-    // }else {
+    const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
+    if(existe) {
+        tarefaAtual.id = existe.id
+        // console.log(existe.id);
+    }else {
         tarefaAtual.id = tarefas.length
         salvarLista(tarefaAtual);
         // console.log(tarefaAtual);
         tarefas.push(tarefaAtual);
-    // }
+    }
     
     
     // console.log(tarefaAtual);
