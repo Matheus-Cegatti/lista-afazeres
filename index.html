@@ -28,7 +28,7 @@
         <form id="formulario-lista" name="nome">
             <p class="texto-adicione">Adicione a sua tarefa</p>
             <div class="icone-formulario">
-                <input type="text" id="afazeres-input" name="texto" placeholder="Adicione sua tarefa.">
+                <input type="text" id="afazeres-input" name="texto" placeholder="Adicione sua tarefa." required onchange="this.value = this.value.trim()">
                 <button type="submit"><i class="fa-sharp fa-solid fa-share"></i>
                 </button>
 
@@ -52,6 +52,7 @@
     </div>
 
     <script src="./js/main.js"></script>
+    
 
 </body>
 

@@ -8,33 +8,37 @@ const cancelarEdicao = document.querySelector(".cancelar-edicao");
 // const listaFeita = document.querySelectorAll(".lista");
 let tituloAntigoDigitado;
 const tarefas = JSON.parse(localStorage.getItem("tarefas")) || []
-console.log(tarefas);
+// console.log(tarefas);
 
 
 tarefas.forEach((elemento) => {
     salvarLista(elemento);
-    console.log(elemento.texto);
+    // console.log(elemento.texto);
     
 })
+
+
+
+
 
 formularioTexto.addEventListener("submit", (evento) => {
     evento.preventDefault();
 
     const valorDoInput = caixaDeTexto
-    console.log(valorDoInput);
-    console.log(caixaDeTexto);
+    // console.log(valorDoInput);
+    // console.log(caixaDeTexto);
     
     // if (valorDoInput) {
     //     salvarLista(valorDoInput)
     // }
 
-    
+ 
     // console.log(existe);
 //começando o localStorage, pegando o valor do input digitado inserindo novos valores no array com o push e transformando em string.
     const tarefaAtual = {
         "texto": valorDoInput.value,
     }
-    console.log(tarefaAtual);
+    // console.log(tarefaAtual);
     //buscando se o valor digitado já existe
     // const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
     // if(existe) {
@@ -43,12 +47,12 @@ formularioTexto.addEventListener("submit", (evento) => {
     // }else {
         tarefaAtual.id = tarefas.length
         salvarLista(tarefaAtual);
-        console.log(tarefaAtual);
+        // console.log(tarefaAtual);
         tarefas.push(tarefaAtual);
     // }
     
     
-    console.log(tarefaAtual);
+    // console.log(tarefaAtual);
     
     
 
@@ -62,7 +66,7 @@ formularioTexto.addEventListener("submit", (evento) => {
 
 //criando a div com as tarefas digitada
 function salvarLista(item) {
-    console.log(item);
+    // console.log(item);
     const fazerLista = document.createElement("div");
     fazerLista.classList.add("lista")
 
@@ -94,7 +98,7 @@ function salvarLista(item) {
     caixaDeTexto.focus();
 
 
-    console.log(fazerLista);
+    // console.log(fazerLista);
 }
 
 
@@ -188,7 +192,7 @@ document.addEventListener("click", (evento) => {
         if (elementoAlvo.classList.contains("botao-feito")) {
             elementoParente.classList.toggle("feito")
             atualizarStatusEdicao(tituloDigitado)
-            console.log("CLICOU2");
+            // console.log("CLICOU2");
             
     }
 
@@ -200,9 +204,9 @@ document.addEventListener("click", (evento) => {
         alternandoLayout()
         //guardando o "valor" digitado quando clico em editar -- deixando o campo preenchido quando clicado na caneta de editar
         inputEditar.value = tituloDigitado;
-        console.log(tituloDigitado);
+        // console.log(tituloDigitado);
         tituloAntigoDigitado = tituloDigitado;
-        console.log(tituloAntigoDigitado);
+        // console.log(tituloAntigoDigitado);
     }
 
     
@@ -211,7 +215,7 @@ document.addEventListener("click", (evento) => {
         elementoParente.remove();
 
         removerListaLocalStorage(tituloDigitado);
-        console.log("Excluiu");
+        // console.log("Excluiu");
     }
 })
 
@@ -235,5 +239,6 @@ editarTarefas.addEventListener("submit", (evento) => {
     }
 
     alternandoLayout()
-    console.log("EDIÇÃO 2");
+    // console.log("EDIÇÃO 2");
 })
+
