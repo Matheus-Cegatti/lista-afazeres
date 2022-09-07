@@ -131,3 +131,10 @@ button i {
 .cancelar-edicao {
   margin-left: 0.7rem;
 }
+
+@media screen and (max-width: 768px) {
+  .container {
+    border-radius: 12px;
+    width: 90vw;
+  }
+}
