@@ -43,7 +43,7 @@ formularioTexto.addEventListener("submit", (evento) => {
     const existe = tarefas.find(elemento => elemento.texto === caixaDeTexto.value)
     if(existe) {
         tarefaAtual.id = existe.id
-        // console.log(existe.id);
+        alert("A tarefa digitada já existe, por favor digite uma nova.")
     }else {
         tarefaAtual.id = tarefas.length
         salvarLista(tarefaAtual);
